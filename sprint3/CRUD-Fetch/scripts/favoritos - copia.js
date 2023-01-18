@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         </figure>
         <ol>              
             <li>Nombre:  ${personaje.name}</li>
-            <li>Año Nacimiento:  ${personaje.birthYear} </li>
+            <li>Precio:  ${personaje.birthYear} </li>
         </ol>
 `;
   } catch (error) {

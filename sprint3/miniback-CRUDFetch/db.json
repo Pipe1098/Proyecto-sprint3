@@ -2,16 +2,17 @@
   "personajes": [
     {
       "id": 1,
-      "name": "Luke Skywalker",
-      "height": "172",
-      "mass": "77",
-      "hairColor": "blond",
-      "skinColor": "fair",
-      "eyeColor": "blue",
-      "birthYear": "19BBY",
-      "gender": "male",
+      "name": "Casa a la venta hermosa",
+      "height": "Laureles",
+      "mass": "400 m2",
+      "hairColor": "4 habitaciones, 3 baños",
+      "skinColor": "casa",
+      "eyeColor": "para renta",
+      "birthYear": "$1.900.000 con parquedero",
+      "gender": "Juan-300256897",
+      "description": "casa bien ubicada en el sector de laureles, cerca a colegios y canchas.",
       "specie": "human",
-      "image": "https://smoda.elpais.com/wp-content/uploads/2019/12/2-look.jpg"
+      "image": "https://www.corredoresintegrados.cl/assets/img/inicio/casas.jpg"
     },
     {
       "name": "Darth Vader",
@@ -22,7 +23,7 @@
       "eyeColor": "yellow",
       "birthYear": "41.9BBY",
       "gender": "male",
-      "specie": "human",
+      "specie": "androide",
       "image": "https://media.revistagq.com/photos/62a0a996223a33e985e4d59a/master/pass/1072434_110615-cc-Darth-Vader-Thumb.jpg",
       "id": 4
     },
@@ -69,16 +70,17 @@
     },
     {
       "id": 1,
-      "name": "Luke Skywalker",
-      "height": "172",
-      "mass": "77",
-      "hairColor": "blond",
-      "skinColor": "fair",
-      "eyeColor": "blue",
-      "birthYear": "19BBY",
-      "gender": "male",
+      "name": "Casa a la venta hermosa",
+      "height": "Laureles",
+      "mass": "400 m2",
+      "hairColor": "4 habitaciones, 3 baños",
+      "skinColor": "casa",
+      "eyeColor": "para renta",
+      "birthYear": "$1.900.000 con parquedero",
+      "gender": "Juan-300256897",
+      "description": "casa bien ubicada en el sector de laureles, cerca a colegios y canchas.",
       "specie": "human",
-      "image": "https://smoda.elpais.com/wp-content/uploads/2019/12/2-look.jpg"
+      "image": "https://www.corredoresintegrados.cl/assets/img/inicio/casas.jpg"
     }
   ]
 }
