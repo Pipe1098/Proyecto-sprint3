@@ -1,0 +1,59 @@
+<html>
+<head>
+<script>
+function filtros() {
+	var filtro = [];
+	var f1 = document.getElementById('filterCategory');
+	var f2 = document.getElementById('filterType');
+	var f3 = document.getElementById('filterDepartament');
+	if (f1.selectedIndex != 0) filtro.push(f1.options[f1.selectedIndex].value);
+	if (f2.selectedIndex != 0) filtro.push(f2.options[f2.selectedIndex].value);
+	if (f3.selectedIndex != 0) filtro.push(f3.options[f3.selectedIndex].value);
+	if (filtro.length == 0) {
+		alert('SIN FILTROS');
+		
+		return;
+	}
+	console.log(typeof filtro );
+	filtro.forEach(element => {
+		console.log(element);
+		console.log(typeof filtro);
+	});
+	
+	var consulta = "select mi_consulta_aqui where condiciones_aqui";
+	for (var i=0; i<filtro.length; i++) {
+		consulta += " AND mi_campo=" + filtro[i];
+	}
+	alert(consulta);
+}
+</script>
+</head>
+<body>
+<label>Categoría: </label>
+<select class="form-select" id="filterCategory">
+<option value="0">Categoria</option>
+<option value="Ventas" selected>Ventas</option>
+<option value="Alquileres">Alquileres</option>
+<option value="AlquilerTemporal">Alquiler temporal</option>
+</select>
+ 
+<label>Tipo </label>
+<select class="form-select" id="filterType">
+<option value="0" selected>Tipo</option>
+<option value="Apartamento">Apartamento</option>
+<option value="Casa">Casa</option>
+<option value="LocalComercial">Local Comercial</option>
+<option value="Terreno">Terreno</option>
+</select>
+ 
+<label>Departamento </label>
+<select class="form-select" id="filterDepartament">
+<option value="0" selected>Departamento</option>
+<option value="Colonia">Colonia</option>
+<option value="Maldonado">Maldonado</option>
+<option value="Montevideo">Montevideo</option>
+<option value="Paysandú">Paysandú</option>
+</select>
+<button onclick="filtros()">Buscar</button>
+</body>
+</html>

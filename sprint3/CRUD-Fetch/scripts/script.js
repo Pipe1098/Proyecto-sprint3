@@ -17,12 +17,20 @@ import postDataFetch from "../helpers/postData.js";
 // console.log(dataJson);
 // console.log(typeof dataJson);
 
+
 const urlCasas = "http://localhost:3000/Casas";
 const urlFavoritos = "http://localhost:3000/favoritos";
 let Casas = [];
 
 const contenedorCasas = document.getElementById("contenedorCards");
-
+const nodelistipo=document.getElementById('select');
+const nodelistip=document.getElementById("select");
+console.log(nodelistip);
+const arrayList = [...nodelistip];
+arrayList.forEach(element => {
+  console.log(element.value);
+});
+console.log(typeof arrayList);
 //-----Capturando el input de búsqueda
 const search = document.getElementById("search");
 
@@ -30,11 +38,12 @@ const search = document.getElementById("search");
 
 //------Capturar el primer conjunto de botones-----
 const botonAll = document.getElementById("all");
-const botonAndroide = document.getElementById("androide");
-const botonHumano = document.getElementById("human");
+const botonsur = document.getElementById("sur");
+const botonnorte = document.getElementById("norte");
+const botoncentro = document.getElementById("centro");
 
 //Colocamos todos estos botones en un array
-const arrayBotones = [botonAll, botonAndroide, botonHumano];
+const arrayBotones = [botonAll, botonsur, botonnorte,botoncentro];
 
 document.addEventListener("DOMContentLoaded", async () => {
   sessionStorage.removeItem("editCasa");

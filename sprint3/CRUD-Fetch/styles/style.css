@@ -250,8 +250,8 @@ body {
     letter-spacing: 1px;
     border: 10px solid rgba(7, 7, 7, 0.1);
     border-width: 9px;
-    margin-top: -2.4%;
-    padding: 23px 16.7px;
+    margin-top: -2.1%;
+    padding: 20px 16.7px;
 
 }
 
@@ -373,9 +373,9 @@ color: #111111;
     }
 .navbar {
     position: absolute;
-    width: 85%;
+    width: 88%;
     height: 70px;
-    left: 11.08%;
+    left: 7.08%;
     right: 13.14%;
     top: 50%;
     bottom: 37.71%;
@@ -387,8 +387,9 @@ color: #111111;
 }
 
 #all,
-#androide,
-#human {
+#sur,
+#centro,
+#norte {
     /* position: absolute;
     margin: -1% 0%;
     left: 90%;
@@ -413,6 +414,7 @@ color: #111111;
 
 #all,
 #norte,
+#centro,
 #sur:hover {
     cursor: pointer;
 }

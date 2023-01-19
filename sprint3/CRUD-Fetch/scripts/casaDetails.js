@@ -29,17 +29,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         <img src="${Casa.images[0]}" alt="${Casa.images}">
         <img src="${Casa.images[1]}" alt="${Casa.images}">
         <img src="${Casa.images[2]}" alt="${Casa.images}">
+        <img src="${Casa.images[3]}" alt="${Casa.images}">
+        <img src="${Casa.images[4]}" alt="${Casa.images}">
+        <img src="${Casa.images[5]}" alt="${Casa.images}">
         </figure>
         <ol class="main__list">              
             <li>Nombre:  ${Casa.name}</li>
-            <li>Precio:  ${Casa.height} </li>
-            <li>Nombre:  ${Casa.precio}</li>
-            <li>Precio:  ${Casa.comodidades} </li>
-            <li>Nombre:  ${Casa.descripcion}</li>
-            <li>Precio:  ${Casa.modalidad} </li>
-            <li>Nombre:  ${Casa.contacto}</li>
-            <li>Precio:  ${Casa.tipo} </li>
-            <li>Nombre:  ${Casa.ubicacion}</li>
+            <li>Área:  ${Casa.height} metros cuadrados</li>
+            <li>Precio: $ ${Casa.precio}</li>
+            <li>Comodidades  ${Casa.comodidades} </li>
+            <li>Descripcion:  ${Casa.descripcion}</li>
+            <li>Modalidad:  ${Casa.modalidad} </li>
+            <li>Contacto:  ${Casa.contacto}</li>
+            <li>Tipo:  ${Casa.tipo} </li>
+            <li>Ubicación:  ${Casa.ubicacion}</li>
         </ol>
 `;
   } catch (error) {

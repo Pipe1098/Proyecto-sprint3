@@ -37,7 +37,7 @@ export const printCardsCasas = (contenedor, arrayCasas, num) => {
                 <button class="card__edit" name='${Casa.id}'>✏</button>
                 <button class="card__favorite" name='${Casa.id}'>❤</button>
                 <h4 class="card__name">${Casa.name}</h4>
-                <h4 class="card__precio">Precio: ${Casa.precio}</h4>
+                <h4 class="card__precio">Precio:$${Casa.precio}</h4>
                 <h4 class="card__mod">${Casa.modalidad}</h4>
                 
         `;
