@@ -10,18 +10,18 @@ import {
   btnCategoryFilters2,
 } from "../modules/btnCategoryFilters.js";
 import { getCategoryFilter } from "../modules/getCategoryFilter.js";
-import { printCardsPersonajes } from "../modules/printPersonajes.js";
+import { printCardsCasas } from "../modules/printCasas.js";
 import postDataFetch from "../helpers/postData.js";
 
 // const dataJson = JSON.stringify(incorrectDataJSON);
 // console.log(dataJson);
 // console.log(typeof dataJson);
 
-const urlPersonajes = "http://localhost:3000/personajes";
+const urlCasas = "http://localhost:3000/Casas";
 const urlFavoritos = "http://localhost:3000/favoritos";
-let personajes = [];
+let Casas = [];
 
-const contenedorPersonajes = document.getElementById("contenedorCards");
+const contenedorCasas = document.getElementById("contenedorCards");
 
 //-----Capturando el input de búsqueda
 const search = document.getElementById("search");
@@ -37,23 +37,23 @@ const botonHumano = document.getElementById("human");
 const arrayBotones = [botonAll, botonAndroide, botonHumano];
 
 document.addEventListener("DOMContentLoaded", async () => {
-  sessionStorage.removeItem("editPersonaje");
-  sessionStorage.removeItem("personajeDetails");
+  sessionStorage.removeItem("editCasa");
+  sessionStorage.removeItem("CasaDetails");
   try {
-    personajes = await getDataFetch(urlPersonajes);
-    console.log(personajes);
+    Casas = await getDataFetch(urlCasas);
+    console.log(Casas);
 
-    printCardsPersonajes(contenedorPersonajes, personajes);
+    printCardsCasas(contenedorCasas, Casas,0);
     //Ejecutamos la función que nos permite filtrar x categoría
-    btnCategoryFilters(arrayBotones, personajes, contenedorPersonajes);
-    //   printCardsPersonajes(contenedorPersonajes, filtros);
+    btnCategoryFilters(arrayBotones, Casas, contenedorCasas);
+    //   printCardsCasas(contenedorCasas, filtros);
 
     //----Funcionalidad al segundo conjunto de botones
-    const parcialCategories = getCategoryFilter(personajes);
+    const parcialCategories = getCategoryFilter(Casas);
     const categories = ["all2", ...parcialCategories];
     console.log(categories);
-    btnCategoryFilters2(categories, personajes, contenedorPersonajes);
-    //   printCardsPersonajes(contenedorPersonajes, filtros2);
+    btnCategoryFilters2(categories, Casas, contenedorCasas);
+    //   printCardsCasas(contenedorCasas, filtros2);
   } catch (error) {
     console.log(error);
     alert(error);
@@ -61,12 +61,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 document.addEventListener("click", async ({ target }) => {
-  //Funcionalidad de ir a detalles del personaje
+  //Funcionalidad de ir a detalles del Casa
   if (target.classList.contains("card__img")) {
-    sessionStorage.setItem("personajeDetails", JSON.stringify(target.id));
-    location.href = "./pages/personajeDetails.html";
+    sessionStorage.setItem("CasaDetails", JSON.stringify(target.id));
+    location.href = "./pages/casaDetails.html";
   }
-  //Funcionalidad de eliminar un personaje
+  //Funcionalidad de eliminar un Casa
   if (target.classList.contains("card__delete")) {
     Swal.fire({
       title: "¿Está usted seguro de eliminar?",
@@ -79,13 +79,13 @@ document.addEventListener("click", async ({ target }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        const idPersonajeDelete = parseInt(target.name);
-        const urlDelete = `${urlPersonajes}/${idPersonajeDelete}`;
+        const idCasaDelete = parseInt(target.name);
+        const urlDelete = `${urlCasas}/${idCasaDelete}`;
 
         try {
           await deleteDataFetch(urlDelete);
-          personajes = await getDataFetch(urlPersonajes);
-          printCardsPersonajes(contenedorPersonajes, personajes);
+          Casas = await getDataFetch(urlCasas);
+          printCardsCasas(contenedorCasas, Casas,0);
         } catch (error) {
           console.log("No se pudo eliminar hay un error" + error);
         }
@@ -97,22 +97,22 @@ document.addEventListener("click", async ({ target }) => {
 
   if (target.classList.contains("card__edit")) {
     console.log(target.name);
-    sessionStorage.setItem("editPersonaje", JSON.stringify(target.name));
-    location.href = "./pages/formPersonaje.html";
+    sessionStorage.setItem("editCasa", JSON.stringify(target.name));
+    location.href = "./pages/formCasa.html";
   }
 
   //Para agregar a favoritos
   if (target.classList.contains("card__favorite")) {
     const idFavorito = target.name;
-    const urlPersonajeFavorito = `${urlFavoritos}?id=${idFavorito}`;
+    const urlCasaFavorito = `${urlFavoritos}?id=${idFavorito}`;
 
-    const favorito = await getDataFetch(urlPersonajeFavorito);
+    const favorito = await getDataFetch(urlCasaFavorito);
     //Obtenemos el objeto
-    const favoritePersonaje = await getDataFetch(
-      `${urlPersonajes}/${idFavorito}`
+    const favoriteCasa = await getDataFetch(
+      `${urlCasas}/${idFavorito}`
     );
-    if (favorito.length === 0 && Object.entries(favoritePersonaje).length) {
-      await postDataFetch(urlFavoritos, favoritePersonaje);
+    if (favorito.length === 0 && Object.entries(favoriteCasa).length) {
+      await postDataFetch(urlFavoritos, favoriteCasa);
       const data = await getDataFetch(urlFavoritos);
       console.log(data);
     }
@@ -124,14 +124,14 @@ search.addEventListener("search", async () => {
   const searchTerm = search.value;
   try {
     if (searchTerm) {
-      const datosPersonajes = await getDataFetch(urlPersonajes);
-      const resultadoBusqueda = datosPersonajes.filter((person) =>
-        person.name.toLowerCase().includes(searchTerm.toLowerCase())
+      const datosCasas = await getDataFetch(urlCasas);
+      const resultadoBusqueda = datosCasas.filter((House) =>
+        House.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
-      printCardsPersonajes(contenedorPersonajes, resultadoBusqueda);
+      printCardsCasas(contenedorCasas, resultadoBusqueda,0);
     } else {
-      const datosPersonajes = await getDataFetch(urlPersonajes);
-      printCardsPersonajes(contenedorPersonajes, datosPersonajes);
+      const datosCasas = await getDataFetch(urlCasas);
+      printCardsCasas(contenedorCasas, datosCasas,0);
     }
   } catch (error) {
     console.log(error);

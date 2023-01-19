@@ -1,4 +1,4 @@
-//Debemos escuchar el evento submit para guardar los cambios (ya sea para editar o crear un personaje)
+//Debemos escuchar el evento submit para guardar los cambios (ya sea para editar o crear un Casa)
 
 import postDataFetch from "../helpers/postData.js";
 import putDataFetch from "../helpers/putData.js";
@@ -7,17 +7,17 @@ export const submitForm = async (form, url, editForm) => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const infoPersonaje = {};
+    const infoCasa = {};
     const valuesForm = Object.values(form);
 
     valuesForm.forEach((valueInput) => {
       if (valueInput.id) {
-        infoPersonaje[valueInput.id] = valueInput.value;
+        infoCasa[valueInput.id] = valueInput.value;
       }
     });
 
-    console.log(infoPersonaje);
-    //Para prevenir que se cree o se edite un personaje con información faltante
+    console.log(infoCasa);
+    //Para prevenir que se cree o se edite un Casa con información faltante
 
     //-- Capturamos todas las labels presentes en el documento
     const labelsNodeList = document.querySelectorAll("label");
@@ -28,13 +28,13 @@ export const submitForm = async (form, url, editForm) => {
 
     console.log(arrayLabels);
 
-    const noHayCamposVacios = validacionCamposForm(arrayLabels, infoPersonaje);
+    const noHayCamposVacios = validacionCamposForm(arrayLabels, infoCasa);
     //Acción para editar
     if (noHayCamposVacios && editForm) {
-      await putDataFetch(url, infoPersonaje);
+      await putDataFetch(url, infoCasa);
       Swal.fire(
         "¡Excelente!",
-        "Se ha actualizado exitosamente el personaje",
+        "Se ha actualizado exitosamente el Casa",
         "success"
       ).then(() => {
         window.location.href = "../index.html";
@@ -44,10 +44,10 @@ export const submitForm = async (form, url, editForm) => {
     //Acción para crear
 
     if (noHayCamposVacios && !editForm) {
-      await postDataFetch(url, infoPersonaje);
+      await postDataFetch(url, infoCasa);
       Swal.fire(
         "¡Excelente!",
-        "Se ha creado exitosamente el personaje",
+        "Se ha creado exitosamente el Casa",
         "success"
       ).then(() => {
         //Limpiar cada campo del formulaio
@@ -63,7 +63,7 @@ export const submitForm = async (form, url, editForm) => {
 
 //----Vamos a construir una función que nos evite guardar información con campos vacíos en un formulario
 
-const validacionCamposForm = (arrayLabels, personajeInfo) => {
+const validacionCamposForm = (arrayLabels, CasaInfo) => {
   //----Mapeamos o creamos un nuevo arrays con las keys de las labels
 
   const keyLabels = arrayLabels.map((key) => ({
@@ -74,10 +74,10 @@ const validacionCamposForm = (arrayLabels, personajeInfo) => {
   console.log(keyLabels);
 
   let keyStr = "";
-  for (const key in personajeInfo) {
-    const propertyPersonaje = personajeInfo[key];
+  for (const key in CasaInfo) {
+    const propertyCasa = CasaInfo[key];
 
-    if (!propertyPersonaje) {
+    if (!propertyCasa) {
       const labelFound = keyLabels.find((label) => label.keyName === key);
       keyStr += labelFound.labelName + ", ";
     }

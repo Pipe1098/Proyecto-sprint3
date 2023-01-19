@@ -1,28 +1,28 @@
-import { printCardsPersonajes } from "./printPersonajes.js";
+import { printCardsCasas } from "./printCasas.js";
 
-export const btnCategoryFilters = (arrayBtns, arrayPerson, contenedor) => {
+export const btnCategoryFilters = (arrayBtns, arrayHouse, contenedor) => {
   arrayBtns.forEach((boton) => {
     boton.addEventListener("click", () => {
-      const filtro = arrayPerson.filter(
-        (person) => person.specie === boton.id
+      const filtro = arrayHouse.filter(
+        (House) => House.ubicacion === boton.id
       );
-        const filteredPersonajes = boton.id === "all" ? arrayPerson : filtro;
-        console.log(filteredPersonajes);
-        printCardsPersonajes(contenedor, filteredPersonajes);
+        const filteredCasas = boton.id === "all" ? arrayHouse : filtro;
+        console.log(filteredCasas);
+        printCardsCasas(contenedor, filteredCasas);
     });
   });
 };
 
-export const btnCategoryFilters2 = (categoryList, arrayPerson, contenedor) => {
+export const btnCategoryFilters2 = (categoryList, arrayHouse, contenedor) => {
   categoryList.forEach((category) => {
     const categoryBtn = document.getElementById(category);
     categoryBtn.addEventListener("click", () => {
-      const specie = categoryBtn.id.slice(0, -1);
-      console.log(specie);
-      const filtro = arrayPerson.filter((person) => person.specie === specie);
-      const filteredPersonajes = specie === "all" ? arrayPerson : filtro;
-      console.log(filteredPersonajes);
-      printCardsPersonajes(contenedor, filteredPersonajes);
+      const ubicacion = categoryBtn.id.slice(0, -1);
+      console.log(ubicacion);
+      const filtro = arrayHouse.filter((House) => House.ubicacion === ubicacion);
+      const filteredCasas = ubicacion === "all" ? arrayHouse : filtro;
+      console.log(filteredCasas);
+      printCardsCasas(contenedor, filteredCasas);
     });
   });
 };
